@@ -1,5 +1,4 @@
 from netmiko import ConnectHandler
-import requests
 from getpass import getpass
 import re
 
@@ -57,5 +56,3 @@ if __name__ == '__main__':
 	#prompt for credentials - password does not echo
 	username = input('Username:')
 	password = getpass('Password:')
-	
-	cli_arp_table_example()
