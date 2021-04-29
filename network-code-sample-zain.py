@@ -4,8 +4,12 @@ from getpass import getpass
 import re
 
 
-#Get a response from a Cisco IOS-XE device CLI
 def cisco_cli_query (host, command):
+	"""
+	Open a connection to the Host CLI via Netmiko
+	The command parameter will be sent to the CLI and the response will be returned
+	"""
+	
 	csr = {
 		'device_type': 'cisco_ios',
 		'host': host,
@@ -20,15 +24,21 @@ def cisco_cli_query (host, command):
 		print('CLI query failed - program will exit')
 		quit()
 
-#Extra data from the output string
 def structurize_arp_table (arp_table_raw):
+	"""
+	Parse the raw unstructured CLI output from a 'show ip arp' command
+	The regular expression below is designed to extract the IP Address, MAC Address, and Interface	
+	"""
+	
 	arp_rex = '(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}).+(\\w{4}\\.\\w{4}.\\w{4}).+?(\\S+)$'
 	arp_table = re.findall(arp_rex, arp_table_raw, re.MULTILINE)
 	return arp_table
 
 
-#Calls the above functions and displays the output
 def cli_arp_table_example():
+	"""
+	Sample execution comparing raw output and parsed output
+	"""
 	raw_arp_table = cisco_cli_query(host, 'show ip arp')
 	
 	print('This is the raw(unstructured) CLI response:')
