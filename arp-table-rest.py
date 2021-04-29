@@ -26,7 +26,7 @@ def cisco_rest_query(host, suffix=''):
 
 def rest_arp_table_example():
 	"""
-	Sample execution comparing raw output and parsed output
+	Call the specific YANG module that returns operational arp data
 	"""
 	
 	arp_json = cisco_rest_query(host, 'Cisco-IOS-XE-arp-oper:arp-data')
