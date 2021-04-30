@@ -15,6 +15,7 @@ Certainly if ARP is not working at all on your new replacement hardware, you wil
 ### Sample ARP Table CLI output:
 
 > csr1000v-1#sh ip arp
+> 
 Protocol  Address          Age (min)  Hardware Addr   Type   Interface
 Internet  4.4.4.3                 -   0000.0c07.ac0a  ARPA   GigabitEthernet2.40
 Internet  4.4.4.4                 -   0050.56bf.4ea3  ARPA   GigabitEthernet2.40
