@@ -14,15 +14,16 @@ Certainly if ARP is not working at all on your new replacement hardware, you wil
 
 ### Sample ARP Table CLI output:
 
->csr1000v-1#sh ip arp
-Protocol  Address          Age (min)  Hardware Addr   Type   Interface
-Internet  4.4.4.3                 -   0000.0c07.ac0a  ARPA   GigabitEthernet2.40
-Internet  4.4.4.4                 -   0050.56bf.4ea3  ARPA   GigabitEthernet2.40
-Internet  10.10.0.74              -   0050.56bf.7db4  ARPA   GigabitEthernet3
-Internet  10.10.10.10             -   0050.56bf.4ea3  ARPA   GigabitEthernet2
-Internet  10.10.20.28             7   0050.56bf.490f  ARPA   GigabitEthernet1
-Internet  10.10.20.48             -   0050.56bf.78ac  ARPA   GigabitEthernet1
-Internet  10.10.20.254           52   0050.56bf.d636  ARPA   GigabitEthernet1
+	csr1000v-1#sh ip arp
+	Protocol  Address          Age (min)  Hardware Addr   Type   Interface
+	Internet  4.4.4.3                 -   0000.0c07.ac0a  ARPA   GigabitEthernet2.40
+	Internet  4.4.4.4                 -   0050.56bf.4ea3  ARPA   GigabitEthernet2.40
+	Internet  10.10.0.74              -   0050.56bf.7db4  ARPA   GigabitEthernet3
+	Internet  10.10.10.10             -   0050.56bf.4ea3  ARPA   GigabitEthernet2
+	Internet  10.10.20.28             7   0050.56bf.490f  ARPA   GigabitEthernet1
+	Internet  10.10.20.48             -   0050.56bf.78ac  ARPA   GigabitEthernet1
+	Internet  10.10.20.254           52   0050.56bf.d636  ARPA   GigabitEthernet1
+
 
 ### Retrieving the ARP table from the CLI in Python
 The first thing we need to do is get the same ARP table output we see above - but our code needs to get it. We are using Kirk Byers' netmiko python module to open the SSH connection to our device and get the response. 
@@ -54,8 +55,8 @@ Unfortunately, the CLI is designed for human consumption. It's output is one big
 
 Here is what the raw ARP table output looked like in the python interpreter:
 
-	cisco_cli_query(host, 'show ip arp')
-	'Protocol  Address          Age (min)  Hardware Addr   Type   Interface\nInternet  4.4.4.3                 -   0000.0c07.ac0a  ARPA   GigabitEthernet2.40\nInternet  4.4.4.4                 	-   0050.56bf.4ea3  ARPA   GigabitEthernet2.40\nInternet  10.10.0.74              -   0050.56bf.7db4  ARPA   GigabitEthernet3\nInternet  10.10.10.10             -   0050.56bf.4ea3  	ARPA   GigabitEthernet2\nInternet  10.10.20.28             8   0050.56bf.490f  ARPA   GigabitEthernet1\nInternet  10.10.20.48             -   0050.56bf.78ac  ARPA  GigabitEthernet1\nInternet  10.10.20.254          100   0050.56bf.d636  ARPA   GigabitEthernet1'
+> >>> cisco_cli_query(host, 'show ip arp')
+'Protocol  Address          Age (min)  Hardware Addr   Type   Interface\nInternet  4.4.4.3                 -   0000.0c07.ac0a  ARPA   GigabitEthernet2.40\nInternet  4.4.4.4                 -   0050.56bf.4ea3  ARPA   GigabitEthernet2.40\nInternet  10.10.0.74              -   0050.56bf.7db4  ARPA   GigabitEthernet3\nInternet  10.10.10.10             -   0050.56bf.4ea3  ARPA   GigabitEthernet2\nInternet  10.10.20.28             8   0050.56bf.490f  ARPA   GigabitEthernet1\nInternet  10.10.20.48             -   0050.56bf.78ac  ARPA   GigabitEthernet1\nInternet  10.10.20.254          100   0050.56bf.d636  ARPA   GigabitEthernet1'
 
 Not exactly pretty is it? Since all the elements are there in the string somewhere, we will employ the powerful **regular expression** library that comes with python to extract the relevant data.
 
