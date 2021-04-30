@@ -71,15 +71,15 @@ Not exactly pretty is it? Since all the elements are there in the string somewhe
 	return arp_table
 Have a look at the code above - specifically the arp_rex variable. This is a regular expression that is designed to **capture** the fields we want. The **IP Address**, the **MAC address**, and the **Interface**. Take a look at the result:
 
-> >>> arp = structurize_arp_table(cisco_cli_query(host, 'show ip arp'))
->>> print(*arp, sep='\n')
-('4.4.4.3', '0000.0c07.ac0a', 'GigabitEthernet2.40')
-('4.4.4.4', '0050.56bf.4ea3', 'GigabitEthernet2.40')
-('10.10.0.74', '0050.56bf.7db4', 'GigabitEthernet3')
-('10.10.10.10', '0050.56bf.4ea3', 'GigabitEthernet2')
-('10.10.20.28', '0050.56bf.490f', 'GigabitEthernet1')
-('10.10.20.48', '0050.56bf.78ac', 'GigabitEthernet1')
-('10.10.20.254', '0050.56bf.d636', 'GigabitEthernet1')
+	arp = structurize_arp_table(cisco_cli_query(host, 'show ip arp'))
+	print(*arp, sep='\n')
+	('4.4.4.3', '0000.0c07.ac0a', 'GigabitEthernet2.40')
+	('4.4.4.4', '0050.56bf.4ea3', 'GigabitEthernet2.40')
+	('10.10.0.74', '0050.56bf.7db4', 'GigabitEthernet3')
+	('10.10.10.10', '0050.56bf.4ea3', 'GigabitEthernet2')
+	('10.10.20.28', '0050.56bf.490f', 'GigabitEthernet1')
+	('10.10.20.48', '0050.56bf.78ac', 'GigabitEthernet1')
+	('10.10.20.254', '0050.56bf.d636', 'GigabitEthernet1')
 
 Looks a lot better right? You can start to see how we could get and compare two of these ARP tables. Or other data sets like routing peers, VxLAN VNIs, IP SLA Data, Port Authentications, etc.
 
@@ -111,7 +111,7 @@ Unlike the CLI, newer methods to communicate with devices such as Netconf or Res
 		print('HTTPS query failed - program will exit')
 		quit()
 
-> {'address': '4.4.4.3', 'enctype': 'ios-encaps-type-arpa', 'interface': 'GigabitEthernet2.40', 'type': 'ios-linktype-ip', 'mode': 'ios-arp-mode-app-alias', 'hwtype': 'ios-snpa-type-ieee48', 'hardware': '00:00:0c:07:ac:0a', 'time': '2021-04-28T07:18:22.815+00:00'}
+	{'address': '4.4.4.3', 'enctype': 'ios-encaps-type-arpa', 'interface': 'GigabitEthernet2.40', 'type': 'ios-linktype-ip', 'mode': 'ios-arp-mode-app-alias', 'hwtype': 'ios-snpa-type-ieee48', 'hardware': '00:00:0c:07:ac:0a', 'time': '2021-04-28T07:18:22.815+00:00'}
 
 This is just one of the ARP entries returned from the query. You can see not only is the data structured as a JSON dictionary already, but there's actually more data than we get from issuing a 'show ip arp' on the CLI.
 
