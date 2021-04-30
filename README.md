@@ -54,9 +54,8 @@ In the python function above, we will connect to the device's CLI via SSH, and i
 Unfortunately, the CLI is designed for human consumption. It's output is one big string that is spaced out to look like a table, but in memory it exists as one big ugly string. In programming terms, this would be `'Unstructured'` data. 
 
 Here is what the raw ARP table output looked like in the python interpreter:
-
-> >>> cisco_cli_query(host, 'show ip arp')
-'Protocol  Address          Age (min)  Hardware Addr   Type   Interface\nInternet  4.4.4.3                 -   0000.0c07.ac0a  ARPA   GigabitEthernet2.40\nInternet  4.4.4.4                 -   0050.56bf.4ea3  ARPA   GigabitEthernet2.40\nInternet  10.10.0.74              -   0050.56bf.7db4  ARPA   GigabitEthernet3\nInternet  10.10.10.10             -   0050.56bf.4ea3  ARPA   GigabitEthernet2\nInternet  10.10.20.28             8   0050.56bf.490f  ARPA   GigabitEthernet1\nInternet  10.10.20.48             -   0050.56bf.78ac  ARPA   GigabitEthernet1\nInternet  10.10.20.254          100   0050.56bf.d636  ARPA   GigabitEthernet1'
+>>> cisco_cli_query(host, 'show ip arp')
+> 'Protocol  Address          Age (min)  Hardware Addr   Type   Interface\nInternet  4.4.4.3                 -   0000.0c07.ac0a  ARPA   GigabitEthernet2.40\nInternet  4.4.4.4                 -   0050.56bf.4ea3  ARPA   GigabitEthernet2.40\nInternet  10.10.0.74              -   0050.56bf.7db4  ARPA   GigabitEthernet3\nInternet  10.10.10.10             -   0050.56bf.4ea3  ARPA   GigabitEthernet2\nInternet  10.10.20.28             8   0050.56bf.490f  ARPA   GigabitEthernet1\nInternet  10.10.20.48             -   0050.56bf.78ac  ARPA   GigabitEthernet1\nInternet  10.10.20.254          100   0050.56bf.d636  ARPA   GigabitEthernet1'
 
 Not exactly pretty is it? Since all the elements are there in the string somewhere, we will employ the powerful **regular expression** library that comes with python to extract the relevant data.
 
