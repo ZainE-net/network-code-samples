@@ -45,8 +45,7 @@ The first thing we need to do is get the same ARP table output we see above - bu
 		output = csr_connection.send_command(command)
 		return output
 	except:
-		print('CLI query failed - program will exit')
-		quit()
+		raise Exception('CLI query failed - program will exit')
 
 In the python function above, we will connect to the device's CLI via SSH, and issue a command. In this case that command is "show ip arp". The response is recorded in the variable **output** as a single large string. Finally! We have the ARP table stored in memory and we can start writing code to compare ARP tables...right?
 
@@ -108,9 +107,7 @@ Unlike the CLI, newer methods to communicate with devices such as Netconf or Res
 			quit()
 		return response.json()
 	except:
-		print('HTTPS query failed - program will exit')
-		quit()
-
+		raise Exception('HTTPS query failed - program will exit')
 	
 >{'address': '4.4.4.3', 'enctype': 'ios-encaps-type-arpa', 'interface': 'GigabitEthernet2.40', 'type': 'ios-linktype-ip', 'mode': 'ios-arp-mode-app-alias', 'hwtype': >'ios-snpa-type-ieee48', 'hardware': '00:00:0c:07:ac:0a', 'time': '2021-04-28T07:18:22.815+00:00'}
 
