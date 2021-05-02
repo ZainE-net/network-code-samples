@@ -81,7 +81,7 @@ Have a look at the code above - specifically the arp_rex variable. This is a reg
 	('10.10.20.48', '0050.56bf.78ac', 'GigabitEthernet1')
 	('10.10.20.254', '0050.56bf.d636', 'GigabitEthernet1')
 
-Looks a lot better right? You can start to see how we could get and compare two of these ARP tables. Or other data sets like routing peers, VxLAN VNIs, IP SLA Data, Port Authentications, etc.
+Looks a lot better right? You can start to imagine how we could compare two ARP tables, or other data sets like routing peers, VxLAN VNIs, IP SLA Data, Port Authentications, etc.
 
 You can take things a step farther, for example if you find some ARP entry is missing - you can have your code do a **DNS Lookup**, or query any **IP Address Manager** for details on the IP. Your code can put that sort of information immediately in front of you, so you have more time to address the actual issue - and with the right data. 
 
