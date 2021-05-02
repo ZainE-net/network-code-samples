@@ -115,7 +115,3 @@ Unlike the CLI, newer methods to communicate with devices such as Netconf or Res
 >{'address': '4.4.4.3', 'enctype': 'ios-encaps-type-arpa', 'interface': 'GigabitEthernet2.40', 'type': 'ios-linktype-ip', 'mode': 'ios-arp-mode-app-alias', 'hwtype': >'ios-snpa-type-ieee48', 'hardware': '00:00:0c:07:ac:0a', 'time': '2021-04-28T07:18:22.815+00:00'}
 
 This is just one of the ARP entries returned from the query. You can see not only is the data structured as a JSON dictionary already, but there's actually more data than we get from issuing a 'show ip arp' on the CLI.
-
-
-## Thanks for Reading
-Hopefully if you are reading this you found it useful. Let me know if you would like to see more similar content.
