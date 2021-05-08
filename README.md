@@ -10,7 +10,7 @@ Your boss wants to avoid any misses this time around, and asks you to look at "a
 
 
 ## The ARP Table
-Certainly if ARP is not working at all on your new replacement hardware, you will notice without any help. The hardware likely would not be reachable. What's more difficult is when a few ARP entries are missing out of thousands. These could represent something more sinister, like an SVI that is missing or broken on your new switch - leaving a number of servers trapped in their own little Layer 2 island. 
+Validating an entire ARP table is a difficult task for a person when there are thousands or tens of thousands of entries. Missing entries could represent something erroneous, like an SVI that is missing or broken on your new switch - leaving a number of servers trapped in their own little Layer 2 island. 
 
 ### Sample ARP Table CLI output:
 
