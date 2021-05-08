@@ -1,4 +1,4 @@
-# Zain's Network Automation Samples
+# Cisco CLI and REST automation examples
 
 This repository demonstrates how to **programmatically** interact with a Cisco IOS-XE device using either the CLI or REST.  We will address a real-world scenario that this type of code can solve.
 
