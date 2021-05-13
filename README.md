@@ -34,18 +34,18 @@ The first thing we need to do is get the same ARP table output we see above - bu
 	The command parameter will be sent to the CLI and the response will be returned
 	"""
 	
-	csr = {
-		'device_type': 'cisco_ios',
-		'host': host,
-		'username': username,
-		'password': password
-		}
-	try:
-		csr_connection = ConnectHandler(**csr)
-		output = csr_connection.send_command(command)
-		return output
-	except:
-		raise Exception('CLI query failed - program will exit')
+		csr = {
+			'device_type': 'cisco_ios',
+			'host': host,
+			'username': username,
+			'password': password
+			}
+		try:
+			csr_connection = ConnectHandler(**csr)
+			output = csr_connection.send_command(command)
+			return output
+		except:
+			raise Exception('CLI query failed - program will exit')
 
 In the python function above, we will connect to the device's CLI via SSH, and issue a command. In this case that command is "show ip arp". The response is recorded in the variable **output** as a single large string. Finally! We have the ARP table stored in memory and we can start writing code to compare ARP tables...right?
 
@@ -65,9 +65,9 @@ Not exactly pretty is it? Since all the elements are there in the string somewhe
 	The regular expression below is designed to extract the IP Address, MAC Address, and Interface	
 	"""
 	
-	arp_rex = '(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}).+(\\w{4}\\.\\w{4}.\\w{4}).+?(\\S+)$'
-	arp_table = re.findall(arp_rex, arp_table_raw, re.MULTILINE)
-	return arp_table
+		arp_rex = '(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}).+(\\w{4}\\.\\w{4}.\\w{4}).+?(\\S+)$'
+		arp_table = re.findall(arp_rex, arp_table_raw, re.MULTILINE)
+		return arp_table
 Have a look at the code above - specifically the arp_rex variable. This is a regular expression that is designed to **capture** the fields we want. The **IP Address**, the **MAC address**, and the **Interface**. Take a look at the result:
 
 	arp = structurize_arp_table(cisco_cli_query(host, 'show ip arp'))
@@ -91,10 +91,10 @@ If you're particularly savvy, you may have realized that the regular expression 
 Unlike the CLI, newer methods to communicate with devices such as Netconf or Restconf are designed to be consumed programatically. The data comes back from the device in a structured package. Have a  look at the data that is returned by the **RESTCONF** sample code.
 
     def cisco_rest_query(host, suffix=''):
-		"""
-		Make an HTTPS GET request to a Cisco device with restconf enabled
-		Suffix is added to the restconf root URI
-		"""
+	"""
+	Make an HTTPS GET request to a Cisco device with restconf enabled
+	Suffix is added to the restconf root URI
+	"""
 	
 		uri = 'https://{}:443/restconf/data/{}'.format(host,suffix)
 		headers = { 'Accept':'application/yang-data+json' }
