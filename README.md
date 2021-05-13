@@ -99,15 +99,10 @@ Unlike the CLI, newer methods to communicate with devices such as Netconf or Res
 	uri = 'https://{}:443/restconf/data/{}'.format(host,suffix)
 	headers = { 'Accept':'application/yang-data+json' }
 	
-	try:
-		response = requests.get(uri, auth=(username,password), headers=headers, verify=False)
-		if response.status_code != 200:
-			print('Non-200 GET response, program will exit')
-			print(response.status_code)
-			quit()
-		return response.json()
-	except:
-		raise Exception('HTTPS query failed - program will exit')
+	response = requests.get(uri, auth=(username,password), headers=headers, verify=False)
+	response.raise_for_status()
+	
+	return response.json()
 	
 >{'address': '4.4.4.3', 'enctype': 'ios-encaps-type-arpa', 'interface': 'GigabitEthernet2.40', 'type': 'ios-linktype-ip', 'mode': 'ios-arp-mode-app-alias', 'hwtype': >'ios-snpa-type-ieee48', 'hardware': '00:00:0c:07:ac:0a', 'time': '2021-04-28T07:18:22.815+00:00'}
 
