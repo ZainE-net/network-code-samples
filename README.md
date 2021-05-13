@@ -91,18 +91,18 @@ If you're particularly savvy, you may have realized that the regular expression 
 Unlike the CLI, newer methods to communicate with devices such as Netconf or Restconf are designed to be consumed programatically. The data comes back from the device in a structured package. Have a  look at the data that is returned by the **RESTCONF** sample code.
 
     def cisco_rest_query(host, suffix=''):
-	"""
-	Make an HTTPS GET request to a Cisco device with restconf enabled
-	Suffix is added to the restconf root URI
-	"""
+		"""
+		Make an HTTPS GET request to a Cisco device with restconf enabled
+		Suffix is added to the restconf root URI
+		"""
 	
-	uri = 'https://{}:443/restconf/data/{}'.format(host,suffix)
-	headers = { 'Accept':'application/yang-data+json' }
+		uri = 'https://{}:443/restconf/data/{}'.format(host,suffix)
+		headers = { 'Accept':'application/yang-data+json' }
 	
-	response = requests.get(uri, auth=(username,password), headers=headers, verify=False)
-	response.raise_for_status()
+		response = requests.get(uri, auth=(username,password), headers=headers, verify=False)
+		response.raise_for_status()
 	
-	return response.json()
+		return response.json()
 	
 >{'address': '4.4.4.3', 'enctype': 'ios-encaps-type-arpa', 'interface': 'GigabitEthernet2.40', 'type': 'ios-linktype-ip', 'mode': 'ios-arp-mode-app-alias', 'hwtype': >'ios-snpa-type-ieee48', 'hardware': '00:00:0c:07:ac:0a', 'time': '2021-04-28T07:18:22.815+00:00'}
 
