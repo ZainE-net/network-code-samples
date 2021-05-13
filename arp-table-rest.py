@@ -13,16 +13,10 @@ def cisco_rest_query(host, suffix=''):
 	uri = 'https://{}:443/restconf/data/{}'.format(host,suffix)
 	headers = { 'Accept':'application/yang-data+json' }
 	
-	try:
-		response = requests.get(uri, auth=(username,password), headers=headers, verify=False)
-		if response.status_code != 200:
-			print('Non-200 GET response, program will exit')
-			print(response.status_code)
-			quit()
-		return response.json()
-	except:
-		print('HTTPS query failed - program will exit')
-		quit()
+	response = requests.get(uri, auth=(username,password), headers=headers, verify=False)
+	response.raise_for_status()
+	
+	return response.json()
 
 def rest_arp_table_example():
 	"""
