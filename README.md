@@ -3,7 +3,7 @@
 This repository demonstrates how to **programmatically** interact with a Cisco IOS-XE device using either the CLI or REST.  We will address a real-world scenario that this type of code can solve.
 
 ### Scenario
-Imagine you are planning for a major hardware replacement in your data center. It's your first time taking on such major work, but you've heard from your boss and colleagues that in the past these infrastructure changes have caused a lot of issues the next business day. 
+Imagine you are planning for a major hardware replacement in your data center. It's your first time taking on such major work, but you've heard from your boss and colleagues that in the past these infrastructure changes have caused a lot of issues that were caught too late. 
 
 Your boss wants to avoid any misses this time around, and asks you to look at "automation" or a "devops" solution to validate the change. They might sound like buzzwords - but hopefully these simple examples demonstrate the value of bringing code into a traditional network infrastructure replacement.
 
