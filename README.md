@@ -85,7 +85,7 @@ Looks a lot better right? You can start to imagine how we could compare two ARP 
 You can take things a step farther, for example if you find some ARP entry is missing - you can have your code do a **DNS Lookup**, or query any **IP Address Manager** for details on the IP. Your code can put that sort of information immediately in front of you, so you have more time to address the actual issue - and with the right data. 
 
 
-## How do APIs factor in?
+## Why use APIs if CLI works?
 If you're particularly savvy, you may have realized that the regular expression string we created to turn the ARP table output into structured data won't work for other output. You'll need to come up with a way to extract the data from each command you send to the CLI before you can really start working with dataset. 
 
 Unlike the CLI, newer methods to communicate with devices such as Netconf or Restconf are designed to be consumed programatically. The data comes back from the device in a structured package. Have a  look at the data that is returned by the **RESTCONF** sample code.
