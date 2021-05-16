@@ -56,3 +56,7 @@ if __name__ == '__main__':
 	#prompt for credentials - password does not echo
 	username = input('Username:')
 	password = getpass('Password:')
+	
+	print('Retrieving ARP Table...')
+	arp = structurize_arp_table(cisco_cli_query(host, 'show ip arp'))
+	print(*arp, sep='\n')
