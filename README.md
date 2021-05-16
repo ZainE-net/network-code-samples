@@ -86,7 +86,7 @@ You can take things a step farther, for example if you find some ARP entry is mi
 
 
 ## Why use APIs if CLI works?
-If you're particularly savvy, you may have realized that the regular expression string we created to turn the ARP table output into structured data won't work for other output. You'll need to come up with a way to extract the data from each command you send to the CLI before you can really start working with dataset. 
+If you're particularly savvy, you may have realized that the regular expression string we created to turn the ARP table output into structured data won't work for other output. You'll need to come up with a way to extract the data from each command you send to the CLI before you can really start working with the dataset. 
 
 Unlike the CLI, newer methods to communicate with devices such as Netconf or Restconf are designed to be consumed programatically. The data comes back from the device in a structured package. Have a  look at the data that is returned by the **RESTCONF** sample code.
 
